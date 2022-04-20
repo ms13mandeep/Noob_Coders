@@ -1,25 +1,56 @@
-/**
- * SYST 17796 Project Base code.
- * Students can modify and extend to implement their game.
- * Add your name as an author and the date!
- */
 package ca.sheridancollege.project;
 
-/**
- * A class to be used as the base Card class for the project. Must be general enough to be instantiated for any Card
- * game. Students wishing to add to the code should remember to add themselves as a modifier.
- *
- * @author dancye
- */
-public abstract class Card {
-    //default modifier for child classes
+/*
+*AssignCards.java
+*Assigns random cards
+*author: Priyanshu Patel, Mandeep Singh, Harriet Liwayan, Zhenqian Fan
+*created date: 4 March 2022 
+*modified Date: 17 April 2022
+*/
 
-    /**
-     * Students should implement this method for their specific children classes
-     *
-     * @return a String representation of a card. Could be an UNO card, a regular playing card etc.
-     */
-    @Override
-    public abstract String toString();
 
+public class Card {
+        //enums for card value and suits
+	public enum Values{
+		ACE,TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KING;
+	}
+	public enum Suits{
+		HEART,DIAMOND,SPADES,CLUBS;
+	}
+	
+        //instance variable
+	private final Values value;
+	private final Suits suit;
+	
+        //constructors
+	public Card(Card.Suits s, Card.Values v) {
+		this.value = v;
+		this.suit = s;
+	}
+	public Card() {
+		this.value=null;
+		this.suit=null;
+	}
+        
+        /*
+        *@return the value
+        */
+	public Values getValue(){
+		
+		return this.value;
+	}
+        
+        /*
+        *@return the suit
+        */
+	public Suits getSuit() {
+		return this.suit;
+	}
+        
+        //Overriding the default toString() method
+        @Override
+	public String toString() {
+		return (getValue() + "     " + getSuit());
+	}
 }
+
